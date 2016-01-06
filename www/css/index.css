@@ -24,58 +24,117 @@ body {
     -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
     -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
     -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
-    background-color:#E4E4E4;
-    background-image:linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
-    background-image:-webkit-linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
-    background-image:-ms-linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
-    background-image:-webkit-gradient(
-        linear,
-        left top,
-        left bottom,
-        color-stop(0, #A7A7A7),
-        color-stop(0.51, #E4E4E4)
-    );
-    background-attachment:fixed;
+    background: #FBE9E7;
     font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
     font-size:12px;
     height:100%;
     margin:0px;
     padding:0px;
-    text-transform:uppercase;
     width:100%;
 }
 
 /* Portrait layout (default) */
 .app {
-    background:url(../img/logo.png) no-repeat center top; /* 170px x 200px */
-    position:absolute;             /* position in the center of the screen */
-    left:50%;
-    top:50%;
-    height:50px;                   /* text area height */
-    width:225px;                   /* text area width */
-    text-align:center;
-    padding:180px 0px 0px 0px;     /* image height is 200px (bottom 20px are overlapped with text) */
-    margin:-115px 0px 0px -112px;  /* offset vertical: half of image height and text area height */
+    /*background:url(../img/logo.png) no-repeat center top; !* 170px x 200px *!*/
+    height:auto;                   /* text area height */
+    width:100%;                   /* text area width */
+    padding:0px 0px 0px 0px;     /* image height is 200px (bottom 20px are overlapped with text) */
                                    /* offset horizontal: half of text area width */
 }
 
 /* Landscape layout (with min-width) */
 @media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
-    .app {
-        background-position:left center;
-        padding:75px 0px 75px 170px;  /* padding-top + padding-bottom + text area = image height */
-        margin:-90px 0px 0px -198px;  /* offset vertical: half of image height */
-                                      /* offset horizontal: half of image width and text area width */
-    }
+
 }
 
 h1 {
     font-size:24px;
     font-weight:normal;
-    margin:0px;
+    margin:0;
     overflow:visible;
-    padding:0px;
-    text-align:center;
+    text-align:left;
+    background-color: #ff5722;
+    color: #fff;
+    text-transform: capitalize;
+    padding: 16px;
+    box-shadow: 0px 0px 12px #aaa;
+}
+
+.list {
+    list-style-type:none;
+    padding: 0;
+    margin: 0;
+
+}
+
+.list li {
+    padding: 16px;
+    border-bottom: 1px solid #e0e0e0;
+    font-size: 18px;
+    position: relative;
+}
+
+.list li:after {
+    content: '';
+    display: block;
+    float: none;
+    clear: both;
+}
+
+.item-menu {
+    position: absolute;
+    width: 100%;
+    right: 0;
+    top: 80%;
+    background: #fff;
+    z-index: 10;
+}
+.item-menu ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+.item-menu li {
+    padding: 16px;
+
+}
+
+.add-item {
+    padding: 0;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+.add-item .button {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    height: 32px;
+    padding: 8px 25px;
+    background: #BF360C;
+    color: #fff;
+    text-transform: uppercase;
+    line-height: 30px;
+    font-size: 16px;
+    font-weight: bold;
+}
+.add-item input[type="text"] {
+    border: 1px solid #fff;
+    height:30px;
+    padding: 8px 16px;
+    width: 100%;
+    line-height: 22px;
+    font-size: 20px;
+
+}
+
+.icon-check-empty, .icon-check {
+    font-size: 20px;
+    float: left;
+    color: #BF360C;
+    margin-right: 5px;
 }
 
 .event {

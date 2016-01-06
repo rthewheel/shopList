@@ -32,17 +32,31 @@
         <meta name="format-detection" content="telephone=no">
         <meta name="msapplication-tap-highlight" content="no">
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <link rel="stylesheet" type="text/css" href="css/fontello.css">
         <link rel="stylesheet" type="text/css" href="css/index.css">
         <title>My ShopList</title>
+
     </head>
-    <body>
-        <div class="app">
+    <body ng-app="shopList">
+        <div class="app" ng-controller="ItemsListCtrl">
             <h1>Shop List</h1>
+            <ul class="list">
+                <li ng-repeat="item in items track by $index" on-long-press="itemOnLongPress($index)" on-touch-end="itemOnTouchEnd($index)">
+                    <i ng-class="{'icon-check-empty': !item.status, 'icon-check': item.status}" ng-click="changeStatus($index)"></i>
+                    {{item.name}}
+
+                    <div class="item-menu" ng-show="item.menu" ng-init="item.menu = false">
+                        <ul>
+                            <li ng-click="delete($index)">Remove</li>
+                        </ul>
+                    </div>
+                </li>
+                <li ng-bind="new_item" ng-show="new_item"><i class="icon-check-empty"></i></li>
+            </ul>
 
             <div class="add-item">
-                <div>Add new item:</div>
-                <input type="text" value="" />
-
+                <input type="text" value="" ng-model="new_item" />
+                <div class="button" value="" ng-click="add(new_item)">Add</div>
             </div>
             <!--<div id="deviceready" class="blink">-->
                 <!--<p class="event listening">Connecting to Device</p>-->
@@ -50,8 +64,11 @@
             <!--</div>-->
         </div>
         <script type="text/javascript" src="js/angular.min.js"></script>
+        <script type="text/javascript" src="js/angular-touch.min.js"></script>
         <script type="text/javascript" src="js/ng-cordova.js"></script>
         <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/controllers.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
+
     </body>
 </html>
