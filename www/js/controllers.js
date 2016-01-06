@@ -38,7 +38,6 @@ shopList.controller('ItemsListCtrl', function ($scope, $cordovaFile) {
     //$scope.items = JSON.parse(localStorage['data']);
 
     document.addEventListener("deviceready", function () {
-        //alert('ready!');
         $scope.listPath = cordova.file.externalRootDirectory;
 
         //Save to file
@@ -51,8 +50,6 @@ shopList.controller('ItemsListCtrl', function ($scope, $cordovaFile) {
 
 
     $scope.add = function(name) {
-        //var listPath = cordova.file.externalRootDirectory;
-
         var itemObj = {
             'name': name,
             'qty': 1,
@@ -69,7 +66,6 @@ shopList.controller('ItemsListCtrl', function ($scope, $cordovaFile) {
 
         $scope.new_item = "";
 
-        //console.log($scope.items);
         var data = JSON.stringify($scope.items);
         //Save to localStorage
         //localStorage.setItem('data', data);
@@ -79,13 +75,10 @@ shopList.controller('ItemsListCtrl', function ($scope, $cordovaFile) {
     };
 
     $scope.delete = function(index) {
-        //var listPath = cordova.file.externalRootDirectory;
-
         $scope.items.splice(index, 1);
         $scope.writeFile();
     };
     $scope.changeStatus = function(index) {
-        //var listPath = cordova.file.externalRootDirectory;
 
         $scope.items[index].status = !$scope.items[index].status;
         $scope.writeFile();
@@ -93,17 +86,14 @@ shopList.controller('ItemsListCtrl', function ($scope, $cordovaFile) {
 
     $scope.itemOnLongPress = function(index) {
         $scope.items[index].menu = true;
-        //alert('Long press');
     };
 
     $scope.itemOnTouchEnd = function(id) {
-        //alert('Touch end');
     };
 
     $scope.writeFile = function(){
         var data = JSON.stringify($scope.items);
         $cordovaFile.writeFile($scope.listPath, "list.json", data, true).then(function(result) {
-            //alert('Success! ' + result );
         }, function(err) {
             alert('Error! ' + err + $scope.listPath);
         });
